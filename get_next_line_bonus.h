@@ -6,7 +6,7 @@
 /*   By: ldatilio <ldatilio@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 20:50:17 by ldatilio          #+#    #+#             */
-/*   Updated: 2021/09/29 21:05:10 by ldatilio         ###   ########.fr       */
+/*   Updated: 2021/09/30 16:54:35 by ldatilio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 # include <unistd.h>
 # include <stddef.h>
 
-# define FD_MAX 256
+# ifndef FD_MAX
+#  define FD_MAX 256
+# endif
 
 /**	@brief	Description Write a function which returns a line read from a
  *			file descriptor.
@@ -54,5 +56,13 @@ char	*ft_strchr(const char *s, int c);
  * @param	size	Buffer size in bytes
  * @return	size_t Returns the length of src. */
 size_t	ft_strlcpy(char *dest, const char *src, size_t destsize);
+
+/**	@brief	Returns a pointer to a new string
+ * 			which is a duplicate of the string s.
+ *	@param	s1 Pointer to the start of the string do be copied
+ *	@return	char* On success, returns a pointer to the
+ * 			duplicated string. It returns NULL if insufficient memory was
+ * 			available, with errno set to indicate the cause of the error.*/
+char	*ft_strdup(const char *s1);
 
 #endif

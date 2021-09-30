@@ -6,7 +6,7 @@
 /*   By: ldatilio <ldatilio@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 15:19:26 by ldatilio          #+#    #+#             */
-/*   Updated: 2021/09/29 21:00:48 by ldatilio         ###   ########.fr       */
+/*   Updated: 2021/09/30 16:46:00 by ldatilio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static char	*make_backup(int fd, char *backup, char	*buffer)
 {
 	int		bytes;
 	int		control;
+	char	*temp;
 
 	bytes = 1;
 	control = 0;
@@ -29,8 +30,10 @@ static char	*make_backup(int fd, char *backup, char	*buffer)
 		}
 		buffer[bytes] = '\0';
 		if (!backup)
-			backup = "";
+			backup = ft_strdup("");
+		temp = backup;
 		backup = ft_strjoin(backup, buffer);
+		free(temp);
 		if (ft_strchr(backup, '\n'))
 			control = 1;
 	}

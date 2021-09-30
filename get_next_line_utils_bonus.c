@@ -6,7 +6,7 @@
 /*   By: ldatilio <ldatilio@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 20:49:46 by ldatilio          #+#    #+#             */
-/*   Updated: 2021/09/29 21:05:22 by ldatilio         ###   ########.fr       */
+/*   Updated: 2021/09/30 17:04:04 by ldatilio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,20 +73,20 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t destsize)
 	return (src_len);
 }
 
-char	*ft_strdup(char *string)
+char	*ft_strdup(const char *s)
 {
 	int		i;
-	char	*str;
+	char	*dup;
 
 	i = 0;
-	str = (char *)malloc (sizeof(char) * (ft_strlen(string) + 1));
-	if (str == NULL)
+	dup = malloc(sizeof(char *) * (ft_strlen(s) + 1));
+	if (dup == NULL)
 		return (NULL);
-	while (string[i])
+	while (s[i])
 	{
-		str[i] = string[i];
+		dup[i] = s[i];
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	dup[i] = '\0';
+	return (dup);
 }

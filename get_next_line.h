@@ -6,7 +6,7 @@
 /*   By: ldatilio <ldatilio@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 16:37:19 by ldatilio          #+#    #+#             */
-/*   Updated: 2021/09/29 19:54:19 by ldatilio         ###   ########.fr       */
+/*   Updated: 2021/09/30 16:52:36 by ldatilio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,13 @@ char	*ft_strchr(const char *s, int c);
  * @param	size	Buffer size in bytes
  * @return	size_t Returns the length of src. */
 size_t	ft_strlcpy(char *dest, const char *src, size_t destsize);
+
+/**	@brief	Returns a pointer to a new string
+ * 			which is a duplicate of the string s.
+ *	@param	s1 Pointer to the start of the string do be copied
+ *	@return	char* On success, returns a pointer to the
+ * 			duplicated string. It returns NULL if insufficient memory was
+ * 			available, with errno set to indicate the cause of the error.*/
+char	*ft_strdup(const char *s1);
 
 #endif
