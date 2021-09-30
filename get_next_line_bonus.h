@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldatilio <ldatilio@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 16:37:19 by ldatilio          #+#    #+#             */
-/*   Updated: 2021/09/29 19:54:19 by ldatilio         ###   ########.fr       */
+/*   Created: 2021/09/29 20:50:17 by ldatilio          #+#    #+#             */
+/*   Updated: 2021/09/29 21:05:10 by ldatilio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
 # include <stddef.h>
+
+# define FD_MAX 256
 
 /**	@brief	Description Write a function which returns a line read from a
  *			file descriptor.
