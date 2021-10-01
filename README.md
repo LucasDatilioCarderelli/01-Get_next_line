@@ -1,6 +1,6 @@
 <div align="center">
 	<a href="https://www.42sp.org.br/">
-		<img src="../img/42-saopaulo.png">
+		<img src="https://github.com/LucasDatilioCarderelli/42Cursus/blob/master/img/42-saopaulo.png" height=200>
 	</a>
 </div>
 
@@ -22,7 +22,7 @@
 
 <div align="center">
 	<a alt="get next line" href="https://github.com/LucasDatilioCarderelli/01-Get_next_line">
-		<img src="../img/gnl.png">
+		<img src="https://github.com/LucasDatilioCarderelli/42Cursus/blob/master/img/gnl.png">
 	</a>
 </div>
 
