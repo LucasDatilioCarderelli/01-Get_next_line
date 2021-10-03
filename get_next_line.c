@@ -6,11 +6,38 @@
 /*   By: ldatilio <ldatilio@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 16:37:17 by ldatilio          #+#    #+#             */
-/*   Updated: 2021/09/30 16:54:08 by ldatilio         ###   ########.fr       */
+/*   Updated: 2021/10/03 15:58:22 by ldatilio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+static char	*make_backup(int fd, char *backup, char	*buffer);
+static char	*make_line(char *backup);
+static char	*make_newbackup(char *backup);
+
+char	*get_next_line(int fd)
+{
+	char		*line;
+	char		*buffer;
+	static char	*backup;
+
+	line = NULL;
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!buffer)
+	{
+		free(buffer);
+		return (NULL);
+	}
+	backup = make_backup(fd, backup, buffer);
+	if (!backup)
+		return (NULL);
+	line = make_line(backup);
+	backup = make_newbackup(backup);
+	return (line);
+}
 
 static char	*make_backup(int fd, char *backup, char	*buffer)
 {
@@ -47,12 +74,12 @@ static char	*make_line(char *backup)
 	char	*line;
 
 	i = 0;
-	while (backup[i] && backup[i - 1] != '\n')
+	while (backup[i] && backup[i] != '\n')
 		i++;
-	line = malloc(sizeof(char *) * (i + 1));
+	line = malloc(sizeof(char *) * (i + 2));
 	if (!line)
 		return (NULL);
-	ft_strlcpy(line, backup, i + 1);
+	ft_strlcpy(line, backup, i + 2);
 	if (line[0] == '\0')
 	{
 		free(line);
@@ -64,7 +91,6 @@ static char	*make_line(char *backup)
 static char	*make_newbackup(char *backup)
 {
 	int		i;
-	int		lenbackup;
 	char	*newbackup;
 
 	i = 0;
@@ -75,33 +101,10 @@ static char	*make_newbackup(char *backup)
 		free(backup);
 		return (NULL);
 	}
-	lenbackup = ft_strlen(backup);
-	newbackup = (char *)malloc(sizeof(char) * (lenbackup - i + 1));
+	newbackup = (char *)malloc(sizeof(char) * (ft_strlen(backup) - i + 1));
 	if (!newbackup)
 		return (NULL);
-	ft_strlcpy(newbackup, backup + i + 1, lenbackup - i + 1);
+	ft_strlcpy(newbackup, backup + i + 1, ft_strlen(backup) - i + 1);
 	free(backup);
 	return (newbackup);
-}
-
-char	*get_next_line(int fd)
-{
-	char		*line;
-	char		*buffer;
-	static char	*backup;
-
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buffer)
-	{
-		free(buffer);
-		return (NULL);
-	}
-	backup = make_backup(fd, backup, buffer);
-	if (!backup)
-		return (NULL);
-	line = make_line(backup);
-	backup = make_newbackup(backup);
-	return (line);
 }

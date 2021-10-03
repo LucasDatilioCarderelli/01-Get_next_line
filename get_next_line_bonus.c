@@ -6,11 +6,38 @@
 /*   By: ldatilio <ldatilio@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 15:19:26 by ldatilio          #+#    #+#             */
-/*   Updated: 2021/09/30 16:46:00 by ldatilio         ###   ########.fr       */
+/*   Updated: 2021/10/03 16:25:20 by ldatilio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
+
+static char	*make_backup(int fd, char *backup, char	*buffer);
+static char	*make_line(char *backup);
+static char	*make_newbackup(char *backup);
+
+char	*get_next_line(int fd)
+{
+	char		*line;
+	char		*buffer;
+	static char	*backup[FD_MAX];
+
+	line = NULL;
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FD_MAX)
+		return (NULL);
+	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!buffer)
+	{
+		free(buffer);
+		return (NULL);
+	}
+	backup[fd] = make_backup(fd, backup[fd], buffer);
+	if (!backup[fd])
+		return (NULL);
+	line = make_line(backup[fd]);
+	backup[fd] = make_newbackup(backup[fd]);
+	return (line);
+}
 
 static char	*make_backup(int fd, char *backup, char	*buffer)
 {
@@ -64,7 +91,6 @@ static char	*make_line(char *backup)
 static char	*make_newbackup(char *backup)
 {
 	int		i;
-	int		lenbackup;
 	char	*newbackup;
 
 	i = 0;
@@ -75,33 +101,10 @@ static char	*make_newbackup(char *backup)
 		free(backup);
 		return (NULL);
 	}
-	lenbackup = ft_strlen(backup);
-	newbackup = (char *)malloc(sizeof(char) * (lenbackup - i + 1));
+	newbackup = (char *)malloc(sizeof(char) * (ft_strlen(backup) - i + 1));
 	if (!newbackup)
 		return (NULL);
-	ft_strlcpy(newbackup, backup + i + 1, lenbackup - i + 1);
+	ft_strlcpy(newbackup, backup + i + 1, ft_strlen(backup) - i + 1);
 	free(backup);
 	return (newbackup);
-}
-
-char	*get_next_line(int fd)
-{
-	char		*line;
-	char		*buffer;
-	static char	*backup[FD_MAX];
-
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FD_MAX)
-		return (NULL);
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buffer)
-	{
-		free(buffer);
-		return (NULL);
-	}
-	backup[fd] = make_backup(fd, backup[fd], buffer);
-	if (!backup[fd])
-		return (NULL);
-	line = make_line(backup[fd]);
-	backup[fd] = make_newbackup(backup[fd]);
-	return (line);
 }
