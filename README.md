@@ -32,6 +32,17 @@ but it will also allow you to learn a highly interesting new concept in C progra
 static variables
 
 ### Description
+May it be a file, stdin, or even later a network connection, you will always need a way to read content line by line. It is time to start working on this function, which will be essential for your future projects.
+
+#### Objectives:
+* `Unix logic`
+
+#### Skills:
+* `Unix`
+* `Rigor`
+* `Algorithms & AI`
+
+### Brief
 ` Write a function which returns a line read from a file descriptor `
 
 ### Prototype
