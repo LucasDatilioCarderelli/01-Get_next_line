@@ -6,11 +6,12 @@
 /*   By: ldatilio <ldatilio@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 22:18:45 by ldatilio          #+#    #+#             */
-/*   Updated: 2021/09/29 21:03:20 by ldatilio         ###   ########.fr       */
+/*   Updated: 2021/10/05 13:50:20 by ldatilio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "./mandatory/get_next_line.h"
+#include "./bonus/get_next_line_bonus.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>

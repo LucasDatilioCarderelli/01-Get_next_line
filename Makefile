@@ -3,11 +3,11 @@ FLAGS 	:= 	-Wall -Wextra -Werror
 BUFFER 	:=	42
 RM		:=	rm -f
 
-NAME	:=	get_next_line.a
-BONUS_N :=	get_next_line_bonus.a
+NAME	:=	./mandatory/get_next_line.a
+BONUS_N :=	./bonus/get_next_line_bonus.a
 
-SRCS	:= 	get_next_line.c get_next_line_utils.c
-BONUS_S :=	get_next_line_bonus.c get_next_line_utils_bonus.c
+SRCS	:= 	./mandatory/get_next_line.c ./mandatory/get_next_line_utils.c
+BONUS_S :=	./bonus/get_next_line_bonus.c ./bonus/get_next_line_utils_bonus.c
 
 OBJS	:=	$(SRCS:.c=.o)
 BONUS_O :=	$(BONUS_S:.c=.o)

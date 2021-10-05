@@ -6,7 +6,7 @@
 /*   By: ldatilio <ldatilio@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 15:19:26 by ldatilio          #+#    #+#             */
-/*   Updated: 2021/10/03 16:25:20 by ldatilio         ###   ########.fr       */
+/*   Updated: 2021/10/05 12:17:26 by ldatilio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@ static char	*make_line(char *backup)
 	char	*line;
 
 	i = 0;
-	while (backup[i] && backup[i - 1] != '\n')
+	while (backup[i] && backup[i] != '\n')
 		i++;
-	line = malloc(sizeof(char *) * (i + 1));
+	line = malloc(sizeof(char *) * (i + 2));
 	if (!line)
 		return (NULL);
-	ft_strlcpy(line, backup, i + 1);
+	ft_strlcpy(line, backup, i + 2);
 	if (line[0] == '\0')
 	{
 		free(line);
